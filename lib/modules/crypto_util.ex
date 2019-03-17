@@ -12,8 +12,8 @@ defmodule Kitch.CryptoUtil do
     base_sig = sign(plaintext, key)
 
     case base_sig == given_sig do
-      true -> :ok
-      false -> :error
+      true -> {:ok, nil}
+      false -> {:error, :invalid_sig}
     end
   end
 
@@ -26,8 +26,7 @@ defmodule Kitch.CryptoUtil do
     key = :base64.decode(key)
     iv = :crypto.strong_rand_bytes(16)
 
-    {ciphertext, tag} =
-      :crypto.block_encrypt(:aes_gcm, key, iv, {@aad, to_string(plaintext), 16})
+    {ciphertext, tag} = :crypto.block_encrypt(:aes_gcm, key, iv, {@aad, to_string(plaintext), 16})
 
     :base64.encode(iv <> tag <> ciphertext)
   end
