@@ -23,7 +23,7 @@ defmodule Kitch.QueryDSL do
             apply(@target_repo, action, [queryable])
 
           params ->
-            unless @can_paginate, do: raise "Repo.paginate/2 not available"
+            unless @can_paginate, do: raise("Repo.paginate/2 not available")
             @target_repo.paginate(queryable, params)
         end
       end
