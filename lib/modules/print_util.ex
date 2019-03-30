@@ -10,16 +10,16 @@ defmodule Kitch.PrintUtil do
 
   alias IO.ANSI
 
-  def info(message, prefix \\ "INFO ====>") do
+  def info(message, prefix \\ "INFO") do
     prefix = highlight(prefix, :cyan, :black)
     message = ANSI.format(cyan(message))
-    IO.puts("#{prefix} #{message}")
+    IO.puts("\n#{prefix} #{message}")
   end
 
-  def error(message, prefix \\ "ERROR ====>") do
+  def error(message, prefix \\ "ERROR") do
     prefix = highlight(prefix, :red, :white)
     message = ANSI.format(red(message))
-    IO.puts(:stderr, "#{prefix} #{message}")
+    IO.puts(:stderr, "\n#{prefix} #{message}")
   end
 
   #
