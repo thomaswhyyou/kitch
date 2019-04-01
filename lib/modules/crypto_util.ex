@@ -45,6 +45,6 @@ defmodule Kitch.CryptoUtil do
   def secret_key() do
     # Read during run time (rather than at compile time with module attribute)
     # so it can be set on the fly
-    Application.get_env(:kitch, Kitch.CryptoUtil)[:secret_key()]
+    Application.get_env(:kitch, Kitch.CryptoUtil)[:secret_key]
   end
 end
