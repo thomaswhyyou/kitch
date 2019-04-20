@@ -14,4 +14,8 @@ defmodule Kitch.DateTimeUtil do
   def utc_now_in_unix() do
     DateTime.utc_now() |> DateTime.to_unix()
   end
+
+  def timestamp_now() do
+    DateTime.utc_now() |> DateTime.truncate(:second)
+  end
 end
